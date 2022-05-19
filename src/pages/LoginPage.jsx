@@ -16,7 +16,7 @@ export default function LoginPage() {
 
   function handleCheckCanProcess() {
     return username.trim().length > 0 && password.trim().length > 0;
-  }
+  };
 
   async function handleLogin() {
     const response = await axios
@@ -26,8 +26,8 @@ export default function LoginPage() {
       localStorage.setItem('username', response.data.username);
       localStorage.setItem('image', response.data.image);
       localStorage.setItem('name', response.data.name);
-      setUser(response.data)
-      navigate('/')
+      setUser(response.data);
+      navigate('/');
     } else {
       alert('Username หรือ Password ผิดพลาด หรือ Server Error กรุณาลองตรวจสอบอีกครั้ง');
     }
@@ -53,13 +53,11 @@ export default function LoginPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
-            className="w-[70px]"
           />
           <Input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-[70px]"
             type="password"
           />
         </div>
@@ -71,7 +69,7 @@ export default function LoginPage() {
           เข้าสู่ระบบ
         </Button>
         <span className="text-gray-600">หากยังไม่มีบัญชี?</span>
-        <span className="text-primary text-lg hover:text-subPrimary cursor-pointer">สมัครสมาชิกเพื่อเพิ่มช่องของคุณ</span>
+        <span className="text-primary text-lg hover:text-subPrimary cursor-pointer" onClick={() => navigate('/register')}>สมัครสมาชิกเพื่อเพิ่มช่องของคุณ</span>
       </div>
     </div>
   );

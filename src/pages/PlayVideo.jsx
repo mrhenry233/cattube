@@ -6,7 +6,6 @@ import CurrentVideoPlayingState from "../recoil/currentVideoPlaying";
 export default function PlayVideo() {
   const navigate = useNavigate();
   const currentVideoPlaying = useRecoilValue(CurrentVideoPlayingState);
-  console.log(currentVideoPlaying);
 
   useEffect(() => {
     if (!currentVideoPlaying.id) navigate('/')

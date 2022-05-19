@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`fixed z-30 w-full h-16 bg-white flex justify-between items-center shadow-md p-4 ${pathname === '/login' && 'hidden'}`}>
+    <div className={`fixed z-30 w-full h-16 bg-white flex justify-between items-center shadow-md p-4 ${(pathname === '/login' || pathname === '/register') && 'invisible'}`}>
       <div
         className="flex items-end w-max cursor-pointer"
         onClick={() => navigate('/')}
@@ -24,14 +24,16 @@ export default function Navbar() {
           alt="logo"
           src="/icons/logo.png"
           width={40}
+          className="rounded-full"
         />
         <span className="text-primary font-bold">CATTUBE</span>
       </div>
-      <div className="flex items-center w-max cursor-pointer relative" onClick={() => setIsShowMenu((prev) => !prev)}>
+      <div className="flex items-center w-max cursor-pointer relative gap-x-4" onClick={() => setIsShowMenu((prev) => !prev)}>
         <img
           alt="user"
           src={image}
           width={40}
+          className="rounded-full"
         />
         <span>{name}</span>
         <div className={`absolute z-50 bg-white top-12 right-0 rounded border flex flex-col ${isShowMenu ? 'visible' : 'invisible'}`}>

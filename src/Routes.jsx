@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import MyVideoPage from "./pages/MyVideosPage";
 import PlayVideo from "./pages/PlayVideo";
+import RegisterPage from "./pages/RegisterPage";
 import UploadVideoPage from "./pages/UploadVideoPage";
 
 const routes = [
@@ -18,6 +19,10 @@ const routes = [
   {
     path: '/login',
     component: <LoginPage />
+  },
+  {
+    path: '/register',
+    component: <RegisterPage />
   },
   {
     path: '/video/upload',

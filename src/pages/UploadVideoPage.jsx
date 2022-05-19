@@ -26,7 +26,7 @@ export default function UploadVideoPage() {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     })
-  }
+  };
 
   async function handleChangeVideo(e) {
     setBase64Video('');
@@ -38,10 +38,7 @@ export default function UploadVideoPage() {
     });
 
     await handleConvertVideoToBase64(file)
-      .then((res) => {
-        console.log(res);
-        setBase64Video(res);
-      })
+      .then((res) => setBase64Video(res))
       .catch((error) => console.log(error));
   };
 
@@ -62,7 +59,7 @@ export default function UploadVideoPage() {
       .post(`${baseURL}/media/create`, JSON.stringify(apiData), { headers: { 'Content-Type': 'application/json' } });
     if (response.status === 200) {
       if (isError) setIsError(false);
-      navigate('/my-videos');
+      navigate(`/video/chanel/${localStorage.getItem('userID')}`);
     } else {
       setIsUploading(false);
       setIsError(true);
