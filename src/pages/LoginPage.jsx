@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { Button } from "../components/common/Buttons";
 import { Input } from "../components/common/Inputs";
 import { baseURL } from "../api";
+import { useSetRecoilState } from "recoil";
+import UserState from "../recoil/user";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const localUser = localStorage.getItem('username');
+  const setUser = useSetRecoilState(UserState);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,11 +23,17 @@ export default function LoginPage() {
       .post(`${baseURL}/login`, JSON.stringify({ uid: username, password }), { headers: { 'Content-Type': 'application/json' } });
     if (response.data) {
       localStorage.setItem('username', response.data.username);
+      setUser(response.data)
       navigate('/')
     } else {
       alert('Username หรือ Password ผิดพลาด หรือ Server Error กรุณาลองตรวจสอบอีกครั้ง');
     }
   };
+
+  useEffect(() => {
+    if (localUser) navigate('/');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localUser]);
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
