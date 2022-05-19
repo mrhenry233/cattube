@@ -1,14 +1,25 @@
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Video from "../components/Video";
+import axios from "axios";
+import { baseURL } from '../api';
+import { useSetRecoilState } from "recoil";
+import CurrentVideoPlaying from '../recoil/currentVideoPlaying';
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const setCurrentVideoPlaying = useSetRecoilState(CurrentVideoPlaying);
   const localUser = localStorage.getItem('username');
+  const [videos, setVideos] = useState([]);
 
-  function handleClickVideo(link) {
-    console.log('link => ', link);
-  }
+  async function handleGetVideos() {
+    const response = await axios.get(`${baseURL}/media/all_videos`);
+    setVideos(response.data);
+  };
+
+  useEffect(() => {
+    handleGetVideos();
+  }, []);
 
   useEffect(() => {
     if (!localUser) {
@@ -21,34 +32,28 @@ export default function HomePage() {
     <div className="w-full flex flex-col">
       <div className="w-full flex flex-col p-4">
         <div className="grid grid-cols-4 gap-x-6 gap-y-8">
-          {/* <video controls>
-            <source
-              src="/videos/sample-cat-vid.mp4"
-              type="video/mp4"
+          {videos.map((video) => (
+            <Video
+              key={video.id}
+              user={video.user}
+              onClick={() => {
+                setCurrentVideoPlaying({
+                  id: video.id,
+                  video_link: video.video_link,
+                  video_name: video.video_name,
+                  user: {
+                    id: video.user.id,
+                    name: video.user.name,
+                    image: video.user.image,
+                  },
+                });
+                navigate('/video/watch');
+              }}
+              video_link={video.video_link}
+              video_name={video.video_name}
+              isShowOwner
             />
-          </video> */}
-          <Video
-            video_link="/efkkek"
-            user_id={{ name: 'test' }}
-            video_name="ทดสอบชื่อคลิป"
-            onClick={(link) => handleClickVideo(link)}
-          />
-          <Video
-            user_id={{ name: 'test' }}
-            video_name="ทดสอบชื่อคลิป"
-          />
-          <Video
-            user_id={{ name: 'test' }}
-            video_name="ทดสอบชื่อคลิป"
-          />
-          <Video
-            user_id={{ name: 'test' }}
-            video_name="ทดสอบชื่อคลิป"
-          />
-          {/* <Video
-            user_id={{ name: 'test' }}
-            video_name="ทดสอบชื่อคลิป"
-          /> */}
+          ))}
         </div>
       </div>
     </div>

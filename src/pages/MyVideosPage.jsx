@@ -45,12 +45,13 @@ export default function MyVideoPage() {
         <span className="text-gray-600 text-xl font-semibold">วิดิโอของ{chanel_name === user.name ? 'ฉัน' : user.name}</span>
         <div className="w-full grid grid-cols-5 gap-x-6 gap-y-8">
           {videos.map((video) => {
+            console.log('now => ', video);
             return (
               <Video
                 key={video.id}
                 user_id={video.user_id}
                 video_link={video.video_link}
-                video_name={video.name}
+                video_name={video.video_name}
                 onClick={(id) => {
                   setCurrentVideoPlaying({
                     id,
@@ -64,6 +65,7 @@ export default function MyVideoPage() {
                   });
                   navigate(`/video/watch`);
                 }}
+                isShowOwner={false}
               />
             );
           })}
