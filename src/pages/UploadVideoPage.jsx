@@ -39,6 +39,7 @@ export default function UploadVideoPage() {
 
     await handleConvertVideoToBase64(file)
       .then((res) => {
+        console.log(res);
         setBase64Video(res);
       })
       .catch((error) => console.log(error));

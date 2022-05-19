@@ -20,15 +20,15 @@ const routes = [
     component: <LoginPage />
   },
   {
-    path: '/my-videos',
-    component: <MyVideoPage />
-  },
-  {
-    path: '/upload',
+    path: '/video/upload',
     component: <UploadVideoPage />
   },
   {
-    path: '/video/:id',
+    path: '/video/chanel/:chanel_name',
+    component: <MyVideoPage />
+  },
+  {
+    path: '/video/watch/:id',
     component: <PlayVideo />
   },
 ];

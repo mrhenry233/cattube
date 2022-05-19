@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`fixed w-full h-16 bg-white flex justify-between items-center shadow-md p-4 ${pathname === '/login' && 'hidden'}`}>
+    <div className={`fixed z-30 w-full h-16 bg-white flex justify-between items-center shadow-md p-4 ${pathname === '/login' && 'hidden'}`}>
       <div
         className="flex items-end w-max cursor-pointer"
         onClick={() => navigate('/')}
@@ -34,17 +34,17 @@ export default function Navbar() {
           width={40}
         />
         <span>{name}</span>
-        <div className={`absolute z-10 bg-white top-12 right-0 rounded border flex flex-col ${isShowMenu ? 'visible' : 'invisible'}`}>
+        <div className={`absolute z-50 bg-white top-12 right-0 rounded border flex flex-col ${isShowMenu ? 'visible' : 'invisible'}`}>
           <span
             className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-            onClick={() => navigate('/upload')}
+            onClick={() => navigate('/video/upload')}
           >
             อัปโหลดวิดิโอ
           </span>
           <hr />
           <span
             className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-            onClick={() => navigate('/my-videos')}
+            onClick={() => navigate(`/video/chanel/${name}`)}
           >
             วิดิโอของฉัน
           </span>

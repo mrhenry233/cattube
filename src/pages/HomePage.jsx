@@ -45,10 +45,10 @@ export default function HomePage() {
             user_id={{ name: 'test' }}
             video_name="ทดสอบชื่อคลิป"
           />
-          <Video
+          {/* <Video
             user_id={{ name: 'test' }}
             video_name="ทดสอบชื่อคลิป"
-          />
+          /> */}
         </div>
       </div>
     </div>
