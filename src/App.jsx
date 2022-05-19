@@ -1,8 +1,9 @@
 import './index.css';
+import Routes from './Routes';
 
 function App() {
   return (
-    <div>hello</div>
+    <Routes />
   );
 }
 

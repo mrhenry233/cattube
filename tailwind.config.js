@@ -7,7 +7,11 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Kanit', 'sans-serif'],
-      }
+      },
+      colors: {
+        primary: '#800080',
+        subPrimary: '#b81cb8',
+      },
     },
   },
   plugins: [],
