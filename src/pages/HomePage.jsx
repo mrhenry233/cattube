@@ -20,8 +20,7 @@ export default function HomePage() {
 
   return (
     <div className="w-full flex flex-col">
-      <Navbar />
-      <div className="mt-16 w-full flex flex-col p-4">
+      <div className="w-full flex flex-col p-4">
         <div className="p-4 grid grid-cols-4 gap-x-6 gap-y-8">
           {/* <video controls>
             <source
