@@ -23,6 +23,8 @@ export default function LoginPage() {
       .post(`${baseURL}/login`, JSON.stringify({ uid: username, password }), { headers: { 'Content-Type': 'application/json' } });
     if (response.data) {
       localStorage.setItem('username', response.data.username);
+      localStorage.setItem('image', response.data.image);
+      localStorage.setItem('name', response.data.name);
       setUser(response.data)
       navigate('/')
     } else {

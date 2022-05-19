@@ -4,7 +4,8 @@ import UserState from "../recoil/user";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const user = useRecoilValue(UserState);
+  const name = localStorage.getItem('name');
+  const image = localStorage.getItem('image');
 
   return (
     <div className="fixed w-full h-16 bg-white flex justify-between items-center shadow-md p-4">
@@ -22,10 +23,10 @@ export default function Navbar() {
       <div className="flex items-center w-max cursor-pointer">
         <img
           alt="user"
-          src={user.image}
+          src={image}
           width={40}
         />
-        <span>{user.name}</span>
+        <span>{name}</span>
       </div>
     </div>
   );
