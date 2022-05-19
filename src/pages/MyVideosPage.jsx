@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { baseURL } from "../api";
 import UserState from '../recoil/user';
 import Video from '../components/Video';
 import { useNavigate, useParams } from "react-router";
+import CurrentVideoPlayingState from "../recoil/currentVideoPlaying";
 
 export default function MyVideoPage() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function MyVideoPage() {
   const { chanel_name } = param;
   const user = useRecoilValue(UserState);
   const [videos, setVideos] = useState([]);
+  const setCurrentVideoPlaying = useSetRecoilState(CurrentVideoPlayingState);
 
   async function handleFetchVideos() {
     const response = await axios.get(`${baseURL}/media/my_videos?user_id=${user.id}`);
@@ -49,7 +51,19 @@ export default function MyVideoPage() {
                 user_id={video.user_id}
                 video_link={video.video_link}
                 video_name={video.name}
-                onClick={(id) => navigate(`/video/watch/${id}`)}
+                onClick={(id) => {
+                  setCurrentVideoPlaying({
+                    id,
+                    video_link: video.video_link,
+                    video_name: video.video_name,
+                    user: {
+                      id: video.user.id,
+                      name: video.user.name,
+                      image: video.user.image,
+                    },
+                  });
+                  navigate(`/video/watch`);
+                }}
               />
             );
           })}

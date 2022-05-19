@@ -28,7 +28,7 @@ const routes = [
     component: <MyVideoPage />
   },
   {
-    path: '/video/watch/:id',
+    path: '/video/watch',
     component: <PlayVideo />
   },
 ];
