@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
-import Navbar from "../components/Navbar";
 import Video from "../components/Video";
 
 export default function HomePage() {
@@ -21,7 +20,7 @@ export default function HomePage() {
   return (
     <div className="w-full flex flex-col">
       <div className="w-full flex flex-col p-4">
-        <div className="p-4 grid grid-cols-4 gap-x-6 gap-y-8">
+        <div className="grid grid-cols-4 gap-x-6 gap-y-8">
           {/* <video controls>
             <source
               src="/videos/sample-cat-vid.mp4"

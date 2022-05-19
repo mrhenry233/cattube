@@ -22,6 +22,7 @@ export default function LoginPage() {
     const response = await axios
       .post(`${baseURL}/login`, JSON.stringify({ uid: username, password }), { headers: { 'Content-Type': 'application/json' } });
     if (response.data) {
+      localStorage.setItem('userID', response.data.id);
       localStorage.setItem('username', response.data.username);
       localStorage.setItem('image', response.data.image);
       localStorage.setItem('name', response.data.name);

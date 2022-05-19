@@ -3,7 +3,6 @@ export default function Video(props) {
     user_id,
     video_link,
     video_name,
-    thumbnail,
     onClick,
   } = props;
 
