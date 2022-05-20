@@ -18,7 +18,9 @@ export default function MyVideoPage() {
 
   async function handleFetchVideos() {
     const response = await axios.get(`${baseURL}/media/my_videos?user_id=${user.id}`);
-    setIsLoaded(true);
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 3000)
     setVideos(response.data);
   };
 
@@ -38,9 +40,12 @@ export default function MyVideoPage() {
             className="rounded-full bg-white"
           />
         </div>
-        <span className="font-semibold text-primary text-3xl">
-          {user.name}
-        </span>
+        <div className="flex flex-col gap-y-1">
+          <span className="font-semibold text-primary text-3xl">
+            {user.name}
+          </span>
+          <span className="text-lg text-gray-600">{user.description}</span>
+        </div>
       </div>
       <hr className="my-4" />
       <div className="w-full flex flex-col gap-y-4">

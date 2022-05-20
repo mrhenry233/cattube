@@ -55,6 +55,7 @@ export default function UploadVideoPage() {
       video_name: videoDetail.name,
       thumbnail: '',
     };
+
     const response = await axios
       .post(`${baseURL}/media/create`, JSON.stringify(apiData), { headers: { 'Content-Type': 'application/json' } });
     if (response.status === 200) {

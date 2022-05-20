@@ -6,6 +6,7 @@ const DefaultUserState = {
   name: '',
   email: '',
   image: '',
+  description: '',
 };
 
 const UserState = atom({

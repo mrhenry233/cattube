@@ -24,7 +24,6 @@ export default function Navbar() {
           alt="logo"
           src="/icons/logo.png"
           width={40}
-          className="rounded-full"
         />
         <span className="text-primary font-bold">CATTUBE</span>
       </div>
@@ -36,7 +35,7 @@ export default function Navbar() {
           className="rounded-full"
         />
         <span>{name}</span>
-        <div className={`absolute z-50 bg-white top-12 right-0 rounded border flex flex-col ${isShowMenu ? 'visible' : 'invisible'}`}>
+        <div className={`absolute w-[250px] z-50 bg-white top-12 right-0 rounded border flex flex-col ${isShowMenu ? 'visible' : 'invisible'}`}>
           <span
             className="px-4 py-2 cursor-pointer hover:bg-gray-100"
             onClick={() => navigate('/video/upload')}
